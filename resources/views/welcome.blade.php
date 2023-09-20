@@ -132,13 +132,13 @@
 
         <div class="navbar w-full h-fit bg-orange-gradient flex justify-between align-middle px-2 py-3 text-nav mt-3">
             <div class="flex divide-x-2 divide-black">
-                <a href="https://bancoexchangeauricoin.org" class="px-2">Cartas de credito</a>
+                <a href="#" class="px-2">Cartas de credito</a>
             </div>
         </div>
     </header>
     <div class="navbar w-full h-fit bg-dark-header flex justify-between align-middle px-2 py-3 text-nav mt-3 text-white">
         <div class="flex divide-x-2 divide-black">
-            <a href="https://bancoexchangeauricoin.org" class="px-2">Cartas de credito</a>
+            <a href="#" class="px-2">Cartas de credito</a>
         </div>
     </div>
     <div class="p-5">
@@ -147,7 +147,7 @@
     <!-- Item -->
     <div class="navbar w-full h-fit bg-dark-header flex justify-between align-middle px-2 py-3 text-nav mt-3 text-white">
         <div class="flex divide-x-2 divide-black">
-            <a href="https://bancoexchangeauricoin.org" class="px-2">Moneda de emisión</a>
+            <a href="#" class="px-2">Moneda de emisión</a>
         </div>
     </div>
     <div class="p-5">
@@ -156,7 +156,7 @@
      <!-- Item -->
      <div class="navbar w-full h-fit bg-dark-header flex justify-between align-middle px-2 py-3 text-nav mt-3 text-white">
         <div class="flex divide-x-2 divide-black">
-            <a href="https://bancoexchangeauricoin.org" class="px-2"> Definición de cartas de crédito</a>
+            <a href="#" class="px-2"> Definición de cartas de crédito</a>
         </div>
     </div>
     <div class="p-5">
@@ -169,7 +169,7 @@
      <!-- Item -->
      <div class="navbar w-full h-fit bg-dark-header flex justify-between align-middle px-2 py-3 text-nav mt-3 text-white">
         <div class="flex divide-x-2 divide-black">
-            <a href="https://bancoexchangeauricoin.org" class="px-2">Descripción de carta de crédito </a>
+            <a href="#" class="px-2">Descripción de carta de crédito </a>
         </div>
     </div>
     <div class="p-5">
@@ -199,7 +199,7 @@
      <!-- Item -->
      <div class="navbar w-full h-fit bg-dark-header flex justify-between align-middle px-2 py-3 text-nav mt-3 text-white">
         <div class="flex divide-x-2 divide-black">
-            <a href="https://bancoexchangeauricoin.org" class="px-2">Clasificación o tipos de carta de crédito</a>
+            <a href="#" class="px-2">Clasificación o tipos de carta de crédito</a>
         </div>
     </div>
     <div class="p-5">
@@ -221,7 +221,7 @@
      <!-- Item -->
      <div class="navbar w-full h-fit bg-dark-header flex justify-between align-middle px-2 py-3 text-nav mt-3 text-white">
         <div class="flex divide-x-2 divide-black">
-            <a href="https://bancoexchangeauricoin.org" class="px-2">Descripción de Cartas de Crédito</a>
+            <a href="#" class="px-2">Descripción de Cartas de Crédito</a>
         </div>
     </div>
     <div class="p-5">
@@ -263,7 +263,7 @@
      <!-- Item -->
      <div class="navbar w-full h-fit bg-dark-header flex justify-between align-middle px-2 py-3 text-nav mt-3 text-white">
         <div class="flex divide-x-2 divide-black">
-            <a href="https://bancoexchangeauricoin.org" class="px-2">Partes que intervienen en una carta de crédito</a>
+            <a href="#" class="px-2">Partes que intervienen en una carta de crédito</a>
         </div>
     </div>
     <div class="p-5">
@@ -276,7 +276,7 @@
      <!-- Item -->
      <div class="navbar w-full h-fit bg-dark-header flex justify-between align-middle px-2 py-3 text-nav mt-3 text-white">
         <div class="flex divide-x-2 divide-black">
-            <a href="https://bancoexchangeauricoin.org" class="px-2">El ordenante de la carta de crédito participa en dos vínculos diferentes:</a>
+            <a href="#" class="px-2">El ordenante de la carta de crédito participa en dos vínculos diferentes:</a>
         </div>
     </div>
     <div class="p-5">
@@ -293,7 +293,7 @@
     <!-- Item -->
     <div class="navbar w-full h-fit bg-dark-header flex justify-between align-middle px-2 py-3 text-nav mt-3 text-white">
         <div class="flex divide-x-2 divide-black">
-            <a href="https://bancoexchangeauricoin.org" class="px-2">El BEA en relación:</a>
+            <a href="#" class="px-2">El BEA en relación:</a>
         </div>
     </div>
     <div class="p-5">
@@ -305,7 +305,7 @@
     <!-- Item -->
     <div class="navbar w-full h-fit bg-dark-header flex justify-between align-middle px-2 py-3 text-nav mt-3 text-white">
         <div class="flex divide-x-2 divide-black">
-            <a href="https://bancoexchangeauricoin.org" class="px-2">Procedimiento para tramitar un crédito documentario ante El BEA</a>
+            <a href="#" class="px-2">Procedimiento para tramitar un crédito documentario ante El BEA</a>
         </div>
     </div>
     <div class="p-5">
