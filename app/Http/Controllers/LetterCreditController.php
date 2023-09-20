@@ -35,7 +35,7 @@ class LetterCreditController extends Controller
             $letter->empresa_documento_identificacion_personal = $rutaArchivo5;
         }
         $letter->save();
-        return view('welcome');
+        return redirect()->route('home');
     }
     // A la vista card
     public function a_la_vista_index(){
