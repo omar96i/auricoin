@@ -13,6 +13,7 @@ class LetterCreditController extends Controller
         $file_3 = $request->file('empresa_factura_proforma');
         $file_4 = $request->file('empresa_contrato_compra_venta');
         $file_5 = $request->file('empresa_documento_identificacion_personal');
+        $file_6 = $request->file('documento_transporte_otros_documentos_1');
         $letter = new LetterCredit($request->all());
         if($file_1){
             $rutaArchivo1 = $file_1->store('archivos');
@@ -33,6 +34,10 @@ class LetterCreditController extends Controller
         if($file_5){
             $rutaArchivo5 = $file_5->store('archivos');
             $letter->empresa_documento_identificacion_personal = $rutaArchivo5;
+        }
+        if($file_6){
+            $rutaArchivo6 = $file_6->store('archivos');
+            $letter->documento_transporte_otros_documentos_1 = $rutaArchivo6;
         }
         $letter->save();
         return redirect()->route('home');

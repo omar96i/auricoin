@@ -733,15 +733,7 @@
                 </div>
                 <div class="col-12">
                     <label for="">Otros documentos</label>
-                    <input type="text" class="form-control" name="documento_transporte_otros_documentos_1">
-                </div>
-                <div class="col-12">
-                    <label for="">Otros documentos</label>
-                    <input type="text" class="form-control" name="documento_transporte_otros_documentos_2">
-                </div>
-                <div class="col-12">
-                    <label for="">Otros documentos</label>
-                    <input type="text" class="form-control" name="documento_transporte_otros_documentos_3">
+                    <input type="file" class="form-control" name="documento_transporte_otros_documentos_1">
                 </div>
 
                 <div class="col-12 mt-3">
