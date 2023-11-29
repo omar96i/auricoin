@@ -21,6 +21,27 @@ Route::get('/', function () {
 
 Route::post('/store', [App\Http\Controllers\LetterCreditController::class, 'store'])->name('letter-store');
 
+Route::get('/show', [LetterCreditController::class, 'show'])->name('show');
+
+Route::get('/show2/{letter}', [LetterCreditController::class, 'show2'])->name('show2');
+Route::get('/show3/{letter}', [LetterCreditController::class, 'show3'])->name('show3');
+Route::get('/show4/{letter}', [LetterCreditController::class, 'show4'])->name('show4');
+
+Route::get('/status/{letter}', [LetterCreditController::class, 'statusChange'])->name('status');
+
+Route::get('/update/{letter}', [LetterCreditController::class, 'updateStatus'])->name('update');
+
+Route::get('/update2/{letter}', [LetterCreditController::class, 'updateStatus2'])->name('update2');
+
+Route::get('/update3/{letter}', [LetterCreditController::class, 'updateStatus3'])->name('update3');
+
+Route::get('/show2', [LetterCreditController::class, 'showAll'])->name('showall');
+Route::get('/show3', [LetterCreditController::class, 'showAll2'])->name('showall-2');
+Route::get('/show4', [LetterCreditController::class, 'showAll3'])->name('showall-3');
+
+
+
+
 
 // Rutas para la vista "A la vista card"
 Route::get('/a-la-vista/index', [LetterCreditController::class, 'a_la_vista_index'])->name('a-la-vista-index');

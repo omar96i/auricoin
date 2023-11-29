@@ -15,33 +15,104 @@ class LetterCreditController extends Controller
         $file_5 = $request->file('empresa_documento_identificacion_personal');
         $file_6 = $request->file('documento_transporte_otros_documentos_1');
         $letter = new LetterCredit($request->all());
-        if($file_1){
-            $rutaArchivo1 = $file_1->store('archivos');
-            $letter->empresa_acta_constitutiva_modificaciones = $rutaArchivo1;
+        if ($file_1) {
+            $nombreArchivo1 = $file_1->getClientOriginalName();
+            $file_1->move(public_path('archivos'), $nombreArchivo1);
+            $letter->empresa_acta_constitutiva_modificaciones = 'archivos/' . $nombreArchivo1;
         }
-        if($file_2){
-            $rutaArchivo2 = $file_2->store('archivos');
-            $letter->empresa_registro_informacion_tributario = $rutaArchivo2;
+
+        if ($file_2) {
+            $nombreArchivo2 = $file_2->getClientOriginalName();
+            $file_2->move(public_path('archivos'), $nombreArchivo2);
+            $letter->empresa_registro_informacion_tributario = 'archivos/' . $nombreArchivo2;
         }
-        if($file_3){
-            $rutaArchivo3 = $file_3->store('archivos');
-            $letter->empresa_factura_proforma = $rutaArchivo3;
+
+        if ($file_3) {
+            $nombreArchivo3 = $file_3->getClientOriginalName();
+            $file_3->move(public_path('archivos'), $nombreArchivo3);
+            $letter->empresa_factura_proforma = 'archivos/' . $nombreArchivo3;
         }
-        if($file_4){
-            $rutaArchivo4 = $file_4->store('archivos');
-            $letter->empresa_contrato_compra_venta = $rutaArchivo4;
+
+        if ($file_4) {
+            $nombreArchivo4 = $file_4->getClientOriginalName();
+            $file_4->move(public_path('archivos'), $nombreArchivo4);
+            $letter->empresa_contrato_compra_venta = 'archivos/' . $nombreArchivo4;
         }
-        if($file_5){
-            $rutaArchivo5 = $file_5->store('archivos');
-            $letter->empresa_documento_identificacion_personal = $rutaArchivo5;
+
+        if ($file_5) {
+            $nombreArchivo5 = $file_5->getClientOriginalName();
+            $file_5->move(public_path('archivos'), $nombreArchivo5);
+            $letter->empresa_documento_identificacion_personal = 'archivos/' . $nombreArchivo5;
         }
-        if($file_6){
-            $rutaArchivo6 = $file_6->store('archivos');
-            $letter->documento_transporte_otros_documentos_1 = $rutaArchivo6;
+
+        if ($file_6) {
+            $nombreArchivo6 = $file_6->getClientOriginalName();
+            $file_6->move(public_path('archivos'), $nombreArchivo6);
+            $letter->documento_transporte_otros_documentos_1 = 'archivos/' . $nombreArchivo6;
         }
         $letter->save();
         return redirect()->route('home');
     }
+
+    public function show(){
+        return view('show', ['letters' => LetterCredit::where('status', 'pendiente')->get()]);
+    }
+
+    public function showAll(){
+        return view('show2', ['letters' => LetterCredit::where('status', 'revisado')->get()]);
+    }
+
+    public function showAll2(){
+        return view('show3', ['letters' => LetterCredit::where('status', 'confirmado')->get()]);
+    }
+
+    public function showAll3(){
+        return view('show4', ['letters' => LetterCredit::where('status', 'aprobado')->get()]);
+    }
+
+    public function statusChange(LetterCredit $letter){
+        return view('status', ['letter' => $letter]);
+    }
+
+    public function updateStatus(LetterCredit $letter){
+        $letter->update([
+            'status' => 'revisado'
+        ]);
+
+        // Redirigir a la ruta show con el ID del letter
+        return response()->json(['status' => true]);
+    }
+
+    public function updateStatus2(LetterCredit $letter){
+        $letter->update([
+            'status' => 'confirmado'
+        ]);
+
+        // Redirigir a la ruta show con el ID del letter
+        return response()->json(['status' => true]);
+    }
+
+    public function updateStatus3(LetterCredit $letter){
+        $letter->update([
+            'status' => 'aprobado'
+        ]);
+
+        // Redirigir a la ruta show con el ID del letter
+        return response()->json(['status' => true]);
+    }
+
+    public function show2(LetterCredit $letter){
+        return view('show_letter', ['letter' => $letter]);
+    }
+
+    public function show3(LetterCredit $letter){
+        return view('show_letter2', ['letter' => $letter]);
+    }
+
+    public function show4(LetterCredit $letter){
+        return view('show_letter3', ['letter' => $letter]);
+    }
+
     // A la vista card
     public function a_la_vista_index(){
         return view('cards.a_la_vista.index');

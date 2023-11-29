@@ -151,6 +151,7 @@
         </div>
         <form method="POST" action="{{ route('letter-store') }}" enctype="multipart/form-data">
             @csrf
+            <input type="text" value="Carta de credito a la vista" name="type" style="display: none;">
             <div class="row">
                 <!-- Primera etapa -->
                 <div class="col-12">
@@ -367,7 +368,7 @@
                 </div>
                 <div class="col-12 col-sm-3">
                     <label for="">Fecha de Nacimiento</label>
-                    <input type="text" class="form-control" name="representante_legal_fecha_nacimiento2">
+                    <input type="date" class="form-control" name="representante_legal_fecha_nacimiento2">
                 </div>
                 <div class="col-12 col-sm-3">
                     <label for="">Dirección de Residencia</label>

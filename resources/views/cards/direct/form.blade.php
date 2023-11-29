@@ -151,6 +151,7 @@
         </div>
         <form method="POST" action="{{ route('letter-store') }}" enctype="multipart/form-data">
             @csrf
+            <input type="text" value="Carta de credito directa" name="type" style="display: none;">
             <div class="row">
                 <!-- Primera etapa -->
                 <div class="col-12">
@@ -367,7 +368,7 @@
                 </div>
                 <div class="col-12 col-sm-3">
                     <label for="">Fecha de Nacimiento</label>
-                    <input type="text" class="form-control" name="representante_legal_fecha_nacimiento2">
+                    <input type="date" class="form-control" name="representante_legal_fecha_nacimiento2">
                 </div>
                 <div class="col-12 col-sm-3">
                     <label for="">Dirección de Residencia</label>
@@ -534,11 +535,11 @@
                 </div>
                 <div class="col-12 col-sm-3">
                     <label for="">Vigencia en días</label>
-                    <input type="text" class="form-control" name="condiciones_vigencia_dias">
+                    <input type="number" class="form-control" name="condiciones_vigencia_dias">
                 </div>
                 <div class="col-12 col-sm-3">
                     <label for="">Valor en Números</label>
-                    <input type="text" class="form-control" name="condiciones_valor_numeros">
+                    <input type="number" class="form-control" name="condiciones_valor_numeros">
                 </div>
                 <div class="col-12 col-sm-9">
                     <label for="">Valor en Letras </label>
@@ -546,7 +547,7 @@
                 </div>
                 <div class="col-12 col-sm-3">
                     <label for="">Tolerancia</label>
-                    <input type="text" class="form-control" name="condiciones_tolerancia">
+                    <input type="number" class="form-control" name="condiciones_tolerancia">
                 </div>
                 <div class="col-12 col-sm-3">
                     <label for="">Despachos Parciales </label>
@@ -607,7 +608,7 @@
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="">días</label>
-                    <input type="text" class="form-control" name="condiciones_2_dias_aceptacion">
+                    <input type="number" class="form-control" name="condiciones_2_dias_aceptacion">
                 </div>
 
                 <div class="col-12 mt-2">
@@ -616,15 +617,15 @@
 
                 <div class="col-12 col-sm-6">
                     <label for="">Vista %</label>
-                    <input type="text" class="form-control" name="condiciones_2_vista_porcentaje">
+                    <input type="number" class="form-control" name="condiciones_2_vista_porcentaje">
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="">Aceptación %</label>
-                    <input type="text" class="form-control" name="condiciones_2_aceptacion_porcentaje">
+                    <input type="number" class="form-control" name="condiciones_2_aceptacion_porcentaje">
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="">días</label>
-                    <input type="text" class="form-control" name="condiciones_2_dias">
+                    <input type="number" class="form-control" name="condiciones_2_dias">
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="">A partir de:</label>
