@@ -141,7 +141,7 @@
 
         <div class="navbar w-full h-fit bg-orange-gradient flex justify-between align-middle px-2 py-3 text-nav mt-3">
             <div class="flex divide-x-2 divide-black">
-                <a href="{{ route('show2') }}" class="px-2">Lista de carta de creditos</a>
+                <a href="{{ route('showall') }}" class="px-2">Lista de carta de creditos</a>
             </div>
         </div>
     </header>
