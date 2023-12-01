@@ -1320,7 +1320,7 @@
                     @if($letter->documento_transporte_otros_documentos_1)
                         <div class="d-flex align-items-center">
                             <a href="{{ asset($letter->documento_transporte_otros_documentos_1) }}" target="_blank" class="mr-2">Ver Archivo</a>
-                            <input class="check-style" type="checkbox" name="documento_transporte_otros_documentos_1">
+
                         </div>
                     @else
                         <p>No hay archivo adjunto</p>
@@ -1389,7 +1389,7 @@
                     @if($letter->empresa_acta_constitutiva_modificaciones)
                     <div class="d-flex align-items-center">
                         <a href="{{ asset($letter->empresa_acta_constitutiva_modificaciones) }}" target="_blank" class="mr-2">Ver Archivo</a>
-                        <input class="check-style" type="checkbox" name="empresa_acta_constitutiva_modificaciones_checkbox" >
+
                     </div>
 
                     @else
@@ -1402,7 +1402,7 @@
                     @if($letter->empresa_registro_informacion_tributario)
                     <div class="d-flex align-items-center">
                         <a href="{{ asset($letter->empresa_registro_informacion_tributario) }}" target="_blank" class="mr-2">Ver Archivo</a>
-                        <input class="check-style" type="checkbox" name="empresa_registro_informacion_tributario_checkbox">
+
                     </div>
 
                     @else
@@ -1415,7 +1415,7 @@
                     @if($letter->empresa_factura_proforma)
                         <div class="d-flex align-items-center">
                             <a href="{{ asset($letter->empresa_factura_proforma) }}" target="_blank" class="mr-2">Ver Archivo</a>
-                            <input class="check-style" type="checkbox" name="empresa_factura_proforma_checkbox">
+
                         </div>
                     @else
                         <p>No hay archivo adjunto</p>
@@ -1427,7 +1427,7 @@
                     @if($letter->empresa_contrato_compra_venta)
                         <div class="d-flex align-items-center">
                             <a href="{{ asset($letter->empresa_contrato_compra_venta) }}" target="_blank" class="mr-2">Ver Archivo</a>
-                            <input class="check-style" type="checkbox" name="empresa_contrato_compra_venta_checkbox">
+
                         </div>
                     @else
                         <p>No hay archivo adjunto</p>
@@ -1444,7 +1444,6 @@
                         <div class="d-flex align-items-center">
 
                             <a href="{{ asset($letter->empresa_documento_identificacion_personal) }}" target="_blank" class="mr-2">Ver Archivo</a>
-                            <input class="check-style" type="checkbox" name="empresa_documento_identificacion_personal_checkbox">
                         </div>
                     @else
                         <p>No hay archivo adjunto</p>
@@ -1481,7 +1480,7 @@
                     url: "/update2/"+letterId,  // Ajusta la URL según tu estructura de rutas
                     method: "GET",
                     success: function() {
-                        window.location.href = "/show";
+                        window.location.href = "/show2";
                     },
                     error: function() {
                         alert("Hubo un error al actualizar el estado.");
