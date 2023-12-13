@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\LetterCreditController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\ProyectController;
+use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +21,33 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+
+
+Route::get('/gerente', function () {
+    // Autenticar al usuario con ID 1
+    $user = \App\Models\User::find(1);
+
+    if ($user) {
+        Auth::login($user);
+        return view('gerente.index');
+    } else {
+        // Manejar el caso en el que el usuario con ID 1 no se encuentre
+        abort(404);
+    }
+})->name('gerente.index');
+
+Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+Route::get('/user/change-password', [UserController::class, 'showChangePasswordForm'])->name('user.change-password');
+Route::post('/user/change-password', [UserController::class, 'processChangePassword']);
+Route::post('/user/update-password', [UserController::class, 'updatePassword'])->name('user.update-password');
+
+Route::resource('maintenance', MaintenanceController::class);
+Route::get('/proyect/done', [ProyectController::class, 'done'])->name('proyect.done');
+Route::get('/proyect/progress', [ProyectController::class, 'progress'])->name('proyect.progress');
+Route::resource('staff', StaffController::class);
+Route::resource('proyect', ProyectController::class);
 
 
 Route::post('/store', [App\Http\Controllers\LetterCreditController::class, 'store'])->name('letter-store');
@@ -38,6 +69,8 @@ Route::get('/update3/{letter}', [LetterCreditController::class, 'updateStatus3']
 Route::get('/show2', [LetterCreditController::class, 'showAll'])->name('showall');
 Route::get('/show3', [LetterCreditController::class, 'showAll2'])->name('showall-2');
 Route::get('/show4', [LetterCreditController::class, 'showAll3'])->name('showall-3');
+
+
 
 
 
