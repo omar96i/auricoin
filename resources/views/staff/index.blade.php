@@ -145,8 +145,8 @@
             <div class="flex divide-x-2 divide-black">
                 <a href="{{ route('gerente.index') }}" class="px-2">Gerente</a>
                 <a href="{{ route('proyect.index') }}" class="px-2">Proyectos</a>
-                <a href="{{ route('proyect.done') }}" class="px-2">Proyectos terminados</a>
                 <a href="{{ route('proyect.progress') }}" class="px-2">proyectos en desarrollo</a>
+                <a href="{{ route('proyect.done') }}" class="px-2">Proyectos terminados</a>
                 <a href="{{ route('maintenance.index') }}" class="px-2">Mantenimientos</a>
                 <a href="{{ route('staff.index') }}" class="px-2">Personal</a>
             </div>
@@ -169,7 +169,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre Completo</th>
-                    <th>NIT</th>
+                    <th>Billetera</th>
                     <th>Área</th>
                     <th>Acciones</th>
                 </tr>

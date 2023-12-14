@@ -9,9 +9,20 @@ use Illuminate\Http\Request;
 
 class MaintenanceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $maintenances = Maintenance::all();
+        $query = Maintenance::query();
+
+        if ($request->has('proyect_search')) {
+            $query->whereHas('proyect', function ($q) use ($request) {
+                $q->where('area_raiz', 'like', '%' . $request->input('proyect_search') . '%');
+            });
+        }
+        if ($request->has('estado_search')) {
+            $query->where('estado', 'like', '%' . $request->input('estado_search') . '%');
+        }
+
+        $maintenances = $query->get();
         return view('maintenance.index', compact('maintenances'));
     }
 

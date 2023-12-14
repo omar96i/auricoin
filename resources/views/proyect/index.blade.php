@@ -146,8 +146,8 @@
             <div class="flex divide-x-2 divide-black">
                 <a href="{{ route('gerente.index') }}" class="px-2">Gerente</a>
                 <a href="{{ route('proyect.index') }}" class="px-2">Proyectos</a>
-                <a href="{{ route('proyect.done') }}" class="px-2">Proyectos terminados</a>
                 <a href="{{ route('proyect.progress') }}" class="px-2">proyectos en desarrollo</a>
+                <a href="{{ route('proyect.done') }}" class="px-2">Proyectos terminados</a>
                 <a href="{{ route('maintenance.index') }}" class="px-2">Mantenimientos</a>
                 <a href="{{ route('staff.index') }}" class="px-2">Personal</a>
             </div>
@@ -165,7 +165,27 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
+        <div class="mb-3">
+            <form action="{{ route('proyect.index') }}" method="GET">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="employee_search" class="form-label">Buscar por Empleado</label>
+                        <input type="text" class="form-control" id="employee_search" name="employee_search" value="{{ request('employee_search') }}">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="area_search" class="form-label">Buscar por Área Raíz</label>
+                        <input type="text" class="form-control" id="area_search" name="area_search" value="{{ request('area_search') }}">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="estado_search" class="form-label">Buscar por Estado</label>
+                        <input type="text" class="form-control" id="estado_search" name="estado_search" value="{{ request('estado_search') }}">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="bg-orange-gradient font-black mt-2">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
         <table class="table">
             <thead>
                 <tr>

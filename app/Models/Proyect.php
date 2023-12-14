@@ -20,6 +20,7 @@ class Proyect extends Model
         'alcance',
         'notas',
         'estado',
+        'descripcion_estado',
     ];
 
     /**

@@ -146,8 +146,8 @@
             <div class="flex divide-x-2 divide-black">
                 <a href="{{ route('gerente.index') }}" class="px-2">Gerente</a>
                 <a href="{{ route('proyect.index') }}" class="px-2">Proyectos</a>
-                <a href="{{ route('proyect.done') }}" class="px-2">Proyectos terminados</a>
                 <a href="{{ route('proyect.progress') }}" class="px-2">proyectos en desarrollo</a>
+                <a href="{{ route('proyect.done') }}" class="px-2">Proyectos terminados</a>
                 <a href="{{ route('maintenance.index') }}" class="px-2">Mantenimientos</a>
                 <a href="{{ route('staff.index') }}" class="px-2">Personal</a>
             </div>
@@ -188,7 +188,9 @@
 
             <div class="mb-3">
                 <label for="areas_vinculadas" class="form-label">Áreas Vinculadas</label>
-                <input type="text" class="form-control" id="areas_vinculadas" name="areas_vinculadas" value="{{ old('areas_vinculadas') }}" required>
+                <div id="areas-container">
+                </div>
+                <button type="button" class="bg-orange-gradient font-black mt-2" onclick="agregarCampo()">Agregar Área</button>
             </div>
 
             <div class="mb-3">
@@ -226,6 +228,21 @@
         <p class="text-center">© 2023 Banco Exchange Auricoin</p>
         <div class="bg-orange-gradient h-4"></div>
     </div>
+    <script>
+        function agregarCampo() {
+            var areasContainer = document.getElementById('areas-container');
+            var nuevaArea = document.createElement('div');
+            nuevaArea.className = 'input-group mt-2';
+            nuevaArea.innerHTML = '<input type="text" class="form-control" name="areas_vinculadas[]" required>' +
+                                  '<button type="button" class="bg-orange-gradient font-black" onclick="removerCampo(this)">Quitar</button>';
+            areasContainer.appendChild(nuevaArea);
+        }
+
+        function removerCampo(elemento) {
+            var areasContainer = document.getElementById('areas-container');
+            areasContainer.removeChild(elemento.parentNode);
+        }
+    </script>
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
