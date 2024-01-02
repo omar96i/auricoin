@@ -83,7 +83,7 @@ class LetterCreditController extends Controller
     }
 
     public function statusChange(LetterCredit $letter){
-        return view('status', ['letter' => $letter]);
+        return view('letter_credit_memory.index', ['letter' => $letter]);
     }
 
     public function updateStatus(LetterCredit $letter){
