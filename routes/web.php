@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('letter_credit_memory.index');
+    return view('welcome');
 })->name('home');
 
 
