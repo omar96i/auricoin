@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class LetterCredit extends Model
 {
@@ -151,4 +152,14 @@ class LetterCredit extends Model
         'representante_legal_telefono_movil2',
         'representante_legal_correo_electronico2',
     ];
+
+    /**
+     * Get the letter_credit_memory associated with the LetterCredit
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function letter_credit_memory(): HasOne
+    {
+        return $this->hasOne(LetterCreditMemory::class, 'letter_credit_id');
+    }
 }

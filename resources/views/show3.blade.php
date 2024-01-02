@@ -178,7 +178,6 @@
                         <td>{{ $letter->ordenante_pagina_web }} </td>
                         <td>{{ $letter->type }} </td>
                         <td>
-                            <a href="/show3/{{ $letter->id }}" class="px-6 py-1 font-black"><button>Aprobar carta</button></a>
                             <a href="/show4/{{ $letter->id }}" class="px-6 py-1 font-black"><button>ver</button></a>
                         </td>
                     </tr>

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('letter_credit_memory.index');
 })->name('home');
 
 
@@ -64,14 +64,12 @@ Route::get('/update/{letter}', [LetterCreditController::class, 'updateStatus'])-
 
 Route::get('/update2/{letter}', [LetterCreditController::class, 'updateStatus2'])->name('update2');
 
-Route::get('/update3/{letter}', [LetterCreditController::class, 'updateStatus3'])->name('update3');
-
 Route::get('/show2', [LetterCreditController::class, 'showAll'])->name('showall');
 Route::get('/show3', [LetterCreditController::class, 'showAll2'])->name('showall-2');
-Route::get('/show4', [LetterCreditController::class, 'showAll3'])->name('showall-3');
 
 
 
+Route::post('/memories/save', [LetterCreditController::class, 'memorySave'])->name('memory-save');
 
 
 

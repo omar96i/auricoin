@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LetterCredit;
+use App\Models\LetterCreditMemory;
 use Illuminate\Http\Request;
 
 class LetterCreditController extends Controller
@@ -54,6 +55,17 @@ class LetterCreditController extends Controller
         return redirect()->route('home');
     }
 
+    public function memorySave(Request $request){
+        $memoery = new LetterCreditMemory($request->all());
+        $memoery->save();
+        $letter = LetterCredit::find($request->letter_credit_id);
+
+        $letter->update([
+            'status' => 'revisado'
+        ]);
+        return $this->show();
+    }
+
     public function show(){
         return view('show', ['letters' => LetterCredit::where('status', 'pendiente')->get()]);
     }
@@ -67,7 +79,7 @@ class LetterCreditController extends Controller
     }
 
     public function showAll3(){
-        return view('show4', ['letters' => LetterCredit::where('status', 'aprobado')->get()]);
+        return view('letter', ['letters' => LetterCredit::with('letter_credit_memory')->where('status', 'aprobado')->get()]);
     }
 
     public function statusChange(LetterCredit $letter){
@@ -89,7 +101,7 @@ class LetterCreditController extends Controller
         ]);
 
         // Redirigir a la ruta show con el ID del letter
-        return response()->json(['status' => true]);
+        return $this->showAll();
     }
 
     public function updateStatus3(LetterCredit $letter){
@@ -102,7 +114,7 @@ class LetterCreditController extends Controller
     }
 
     public function show2(LetterCredit $letter){
-        return view('show_letter', ['letter' => $letter]);
+        return view('letter_credit_memory.confirm', ['letter' => $letter->load('letter_credit_memory')]);
     }
 
     public function show3(LetterCredit $letter){
@@ -110,7 +122,7 @@ class LetterCreditController extends Controller
     }
 
     public function show4(LetterCredit $letter){
-        return view('show_letter3', ['letter' => $letter]);
+        return view('letter_credit_memory.show', ['letter' => $letter->load('letter_credit_memory')]);
     }
 
     // A la vista card
