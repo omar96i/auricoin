@@ -125,6 +125,37 @@
         background-color: green;
     }
 
+    @media print {
+            .col-10,
+            .col-2 {
+                float: none !important;
+                width: 100% !important;
+            }
+        }
+
+        .custom-container {
+            margin: 0 auto; /* Centra el contenido */
+            max-width: 1200px; /* Establece un ancho máximo para el contenedor */
+        }
+
+        .custom-col-10,
+        .custom-col-2 {
+            padding: 10px; /* Añade espaciado interno */
+            background-color: #f0f0f0; /* Fondo gris claro */
+            border: 1px solid #ccc; /* Borde delgado */
+        }
+
+        .custom-col-10 {
+            width: 83.33%; /* 10 de 12 columnas */
+            float: left;
+        }
+
+        .custom-col-2 {
+            width: 16.67%; /* 2 de 12 columnas */
+            float: left;
+        }
+
+
 </style>
 <body class="bg-body">
     <header>
@@ -159,7 +190,7 @@
                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Carta de credito</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Memoria</button>
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Swift</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -1457,354 +1488,316 @@
                 </form>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <form>
-                    @csrf
-                    <div class="row">
-                        <div class="col-12 col-sm-6" style="display: none;">
-                            <label for="letter_credit_id" class="form-label">Id de carta de credito</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled required type="number" name="letter_credit_id" value="{{ $letter->id }}">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
+                <div id="card-credit">
+                    <div class="row" style="background: white;" >
+                        <div class="col-10 text-center" >
+                            <h4>AURICOIN EXCHANGE BANK (BEA) </h4>
+                            <h4>Direct Letter of Credit </h4>
+                            <h4>SWIFT {{ $letter->letter_credit_memory->created_at }}</h4>
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <label for="sequence_of_the_total" class="form-label">Secuencia total</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled required type="number" name="sequence_of_the_total" value="{{ $letter->letter_credit_memory->sequence_of_the_total }}">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
+                        <div class="col-2">
+                            <h4>N°.: {{ $letter->id }}</h4>
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <label for="form_of_documentary_credit" class="form-label">Forma de crédito documentario</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled required type="text" name="form_of_documentary_credit" value="{{ $letter->letter_credit_memory->form_of_documentary_credit }}">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="credit_number" class="form-label">Número de crédito</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->credit_number }}" required type="text" name="credit_number">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="reference_to_the_notice" class="form-label">Referencia de preaviso</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->reference_to_the_notice }}" required type="text" name="reference_to_the_notice">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="date_of_issue" class="form-label">Fecha de emisión</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->date_of_issue }}" required type="date" name="date_of_issue">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="applicable_rules" class="form-label">Reglas aplicables</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->applicable_rules }}" required type="text" name="applicable_rules">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <label for="place_expiration" class="form-label">Lugar de vencimiento</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->place_expiration }}" required type="text" name="place_expiration">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="date_expiration" class="form-label">Fecha de vencimiento</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->date_expiration }}" required type="date" name="date_expiration">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="enchange_ot_payer" class="form-label">Entidad</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->enchange_ot_payer }}" required type="text" name="enchange_ot_payer">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="ordering" class="form-label">Ordenante</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->ordering }}" required type="text" name="ordering">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="beneficiary" class="form-label">Beneficiario</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->beneficiary }}" required type="text" name="beneficiary">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="beneficiary_direction" class="form-label">Beneficiario dirección</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->beneficiary_direction }}" required type="text" name="beneficiary_direction">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="beneficiary_wallet_number" class="form-label">Beneficiario número</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->beneficiary_wallet_number }}" required type="text" name="beneficiary_wallet_number">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="beneficiary_email" class="form-label">Beneficiario email</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->beneficiary_email }}" required type="text" name="beneficiary_email">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="coint_payment" class="form-label">Moneda de pago</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->coint_payment }}" required type="text" name="coint_payment">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="tolerance" class="form-label">Tolerancia</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->tolerance }}" required type="text" name="tolerance">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="number_commissions" class="form-label">Pago de comisión</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->number_commissions }}" required type="text" name="number_commissions">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="partial_shipments" class="form-label">Embarques parciales</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->partial_shipments }}" required type="text" name="partial_shipments">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="merchandise_loading_place" class="form-label">Lugar de carga de la mercancia</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->merchandise_loading_place }}" required type="text" name="merchandise_loading_place">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="outside" class="form-label">Salida</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->outside }}" required type="text" name="outside">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="destination" class="form-label">Puerto/aeropuerto de destino</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->destination }}" required type="text" name="destination">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="merchandise_destination" class="form-label">Lugar de destino de la mercancía</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->merchandise_destination }}" required type="text" name="merchandise_destination">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="maximum_embargo_date" class="form-label">Fecha máxima de embarque</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->maximum_embargo_date }}" required type="date" name="maximum_embargo_date">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="transfer_start_date" class="form-label">Periodo de inicio de embargue</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->transfer_start_date }}" required type="date" name="transfer_start_date">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="transfer_end_date" class="form-label">Periodo final de embargue</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->transfer_end_date }}" required type="date" name="transfer_end_date">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="transshipment" class="form-label">Transbordos</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->transshipment }}" required type="text" name="transshipment">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="description" class="form-label">Descripción de compra</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->description }}" required type="text" name="description">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="required_document" class="form-label">Documentos requeridos</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->required_document }}" required type="text" name="required_document">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="place_of_destination" class="form-label">Destino de la mercancia</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->place_of_destination }}" required type="text" name="place_of_destination">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="max_date_for_boarding" class="form-label">Fecha máxima de embarque</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->max_date_for_boarding }}" required type="date" name="max_date_for_boarding">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-
-                        <div class="col-12 col-sm-6">
-                            <label for="payment_condition" class="form-label">Condiciones de pago</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->payment_condition }}" required type="text" name="payment_condition">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
                         <div class="col-12">
-                            <label for="merchandise_description" class="form-label">Descripción de mercancia</label>
-                            <div class="d-flex align-items-center">
-                                <textarea name="merchandise_description" disabled required class="form-control mr-2" cols="30" rows="10">{{ $letter->letter_credit_memory->merchandise_description }}</textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="ordering_duty" class="form-label">Ordenante</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->ordering_duty }}" required type="text" name="ordering_duty">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="document_required" class="form-label">Documentos requeridos</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->document_required }}" required type="text" name="document_required">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="condition_additional" class="form-label">Condiciones adicionales</label>
-                            <div class="d-flex align-items-center">
-                                <textarea name="condition_additional" disabled required class="form-control mr-2" cols="30" rows="10">{{ $letter->letter_credit_memory->condition_additional }}</textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="payment_method" class="form-label">Metodo de pago condición</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->payment_method }}" required type="text" name="payment_method">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="expenses" class="form-label">Gastos</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->expenses }}" required type="text" name="expenses">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="presentation_period_days" class="form-label">Plazo de presentación en días.</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->presentation_period_days }}" required type="text" name="presentation_period_days">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="confirmation_instructions" class="form-label">Instrucciones de confirmación</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->confirmation_instructions }}" required type="text" name="confirmation_instructions">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="instructions_payments" class="form-label">Instrucciones de pagos</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->instructions_payments }}" required type="text" name="instructions_payments">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="report" class="form-label">Reporte</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->report }}" required type="text" name="report">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-6">
-                            <label for="information_sender" class="form-label">Informacion de remitente</label>
-                            <div class="d-flex align-items-center">
-                                <input class="form-control mr-2" readonly disabled value="{{ $letter->letter_credit_memory->information_sender }}" required type="text" name="information_sender">
-                                <!-- Puedes agregar más elementos aquí si es necesario -->
-                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Label</th>
+                                        <th>Field Name</th>
+                                        <th>Content/options</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>80:</td>
+                                        <td>Sequence of the total</td>
+                                        <td>{{ $letter->letter_credit_memory->sequence_of_the_total }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>80-A:</td>
+                                        <td>Form of documentary credit</td>
+                                        <td>{{ $letter->letter_credit_memory->form_of_documentary_credit }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>AURI-8888-ECU</td>
+                                        <td>(irrevocable, ...)</td>
+                                        <td>{{ $letter->letter_credit_memory->form_of_documentary_credit }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>81-D:</td>
+                                        <td>Credit number</td>
+                                        <td>{{ $letter->letter_credit_memory->credit_number }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>82-A:</td>
+                                        <td>Reference to the notice</td>
+                                        <td>{{ $letter->letter_credit_memory->reference_to_the_notice }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>83-E:</td>
+                                        <td>(It will contain the PREADV term, followed by the advance notice)</td>
+                                        <td>{{ $letter->letter_credit_memory->applicable_rules }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>84-A:</td>
+                                        <td>Date of issue</td>
+                                        <td>{{ $letter->letter_credit_memory->date_of_issue }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td></td>
+                                        <td>Applicable rules</td>
+                                        <td>{{ $letter->letter_credit_memory->applicable_rules }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>88-A:</td>
+                                        <td>(ucp latest version, ucpurr latest version ...)</td>
+                                        <td>{{ $letter->letter_credit_memory->enchange_ot_payer }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>86-T:</td>
+                                        <td>Place and date of expiration</td>
+                                        <td>{{ $letter->letter_credit_memory->date_expiration }} {{ $letter->letter_credit_memory->place_expiration }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>87-L:</td>
+                                        <td>Echange of the payer (If it is not the same as the issuer)</td>
+                                        <td>{{ $letter->letter_credit_memory->enchange_ot_payer }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>89-G:</td>
+                                        <td>Ordering</td>
+                                        <td>{{ $letter->letter_credit_memory->ordering }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>76-R:</td>
+                                        <td>Beneficiary</td>
+                                        <td>{{ $letter->letter_credit_memory->beneficiary }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>87-S:</td>
+                                        <td>Beneficiary Direction</td>
+                                        <td>{{ $letter->letter_credit_memory->beneficiary_direction }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td></td>
+                                        <td>Beneficiary Wallet Number</td>
+                                        <td>{{ $letter->letter_credit_memory->beneficiary_wallet_number }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>45-I:</td>
+                                        <td>Beneficiary email</td>
+                                        <td>{{ $letter->letter_credit_memory->beneficiary_email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>09-P:</td>
+                                        <td>Cryptocurrency of payment and amount</td>
+                                        <td>{{ $letter->letter_credit_memory->coint_payment }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>14-M:</td>
+                                        <td>Percentage of tolerance in  +/-</td>
+                                        <td>{{ $letter->letter_credit_memory->tolerance }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td></td>
+                                        <td>Additional amounts covered, freight, interest, insurance premium, ..</td>
+                                        <td>{{ $letter->letter_credit_memory->number_commissions }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>34-Q:</td>
+                                        <td>Dates, amounts and how to determine a combined payment credit</td>
+                                        <td>{{ $letter->letter_credit_memory->outside }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>27-F:</td>
+                                        <td>Payment date in a credit usable by deferred payment or negotiation</td>
+                                        <td>{{ $letter->letter_credit_memory->destination }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>22-L:</td>
+                                        <td>Partial shipments</td>
+                                        <td>{{ $letter->letter_credit_memory->merchandise_destination }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>07-N</td>
+                                        <td>(allowed, not allowed, conditional)</td>
+                                        <td>{{ $letter->letter_credit_memory->maximum_embargo_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>80:</td>
+                                        <td>Sequence of the total</td>
+                                        <td>{{ $letter->letter_credit_memory->sequence_of_the_total }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td></td>
+                                        <td>Transfers</td>
+                                        <td>{{ $letter->letter_credit_memory->transfer_start_date }} {{ $letter->letter_credit_memory->transfer_end_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>91-K:</td>
+                                        <td>(allowed, not allowed, conditional)</td>
+                                        <td>{{ $letter->letter_credit_memory->transshipment }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>20-T:</td>
+                                        <td>Place of loading or dispatch or taking to load the merchandise</td>
+                                        <td>{{ $letter->letter_credit_memory->description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>11-I:</td>
+                                        <td>Port of loading/departure airport</td>
+                                        <td>{{ $letter->letter_credit_memory->required_document }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td></td>
+                                        <td>Port of discharge/destination airport</td>
+                                        <td>{{ $letter->letter_credit_memory->place_of_destination }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>43-F:</td>
+                                        <td>Place of destination of the merchandise</td>
+                                        <td>{{ $letter->letter_credit_memory->place_of_destination }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>28-M:</td>
+                                        <td>Maximum date for boarding</td>
+                                        <td>{{ $letter->letter_credit_memory->max_date_for_boarding }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>65-P:</td>
+                                        <td>Period in which the merchandise can be shipped</td>
+                                        <td>{{ $letter->letter_credit_memory->payment_condition }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td></td>
+                                        <td>Merchandise description</td>
+                                        <td>{{ $letter->letter_credit_memory->merchandise_description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>39-O:</td>
+                                        <td>(The term Incoterm will be specified in this field)</td>
+                                        <td>{{ $letter->letter_credit_memory->ordering_duty }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>82-C:</td>
+                                        <td>Documents required in the credit</td>
+                                        <td>{{ $letter->letter_credit_memory->document_required }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>94-U:</td>
+                                        <td>Additional conditions</td>
+                                        <td>{{ $letter->letter_credit_memory->condition_additional }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>49-F:</td>
+                                        <td>Special payment conditions of the beneficiary</td>
+                                        <td>{{ $letter->letter_credit_memory->payment_method }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>71D</td>
+                                        <td>Expenses</td>
+                                        <td>{{ $letter->letter_credit_memory->expenses }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>71D</td>
+                                        <td>(If this field is empty, all expenses except negotiation and transfer must be paid by the payer)</td>
+                                        <td>{{ $letter->letter_credit_memory->expenses }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>48</td>
+                                        <td>Presentation period in days</td>
+                                        <td>{{ $letter->letter_credit_memory->presentation_period_days }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>49</td>
+                                        <td>Confirmation instructions</td>
+                                        <td>{{ $letter->letter_credit_memory->confirmation_instructions }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>49</td>
+                                        <td>(The following terms will be used:  confirm, may add or without)</td>
+                                        <td>{{ $letter->letter_credit_memory->confirmation_instructions }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>78</td>
+                                        <td>Instructions for the paying, accepting, or negotiating Exchange</td>
+                                        <td>{{ $letter->letter_credit_memory->instructions_payments }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>57a</td>
+                                        <td>«Report through»</td>
+                                        <td>{{ $letter->letter_credit_memory->report }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>72Z</td>
+                                        <td>Information from the sender to the receiver</td>
+                                        <td>{{ $letter->letter_credit_memory->information_sender }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>72Z</td>
+                                        <td>(In this field you can use any of the following codes:  PHONBEN which is «Contact the beneficiary by phone», and TELEBEN, «Contact the beneficiary by the most efficient means of communication»</td>
+                                        <td>{{ $letter->letter_credit_memory->information_sender }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </form>
+                </div>
+
+                <div class="col-12">
+                    <a class="bg-orange-gradient px-6 py-1 font-black float-right btn" href="javascript:imprSelec()">
+                        Imprimir/Pdf
+                    </a>
+                </div>
             </div>
         </div>
-
-
     </div>
 
     <div>
@@ -1816,6 +1809,14 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
+        function imprSelec() {
+            var ficha = document.getElementById('card-credit');
+            var ventimp = window.open(' ', 'popimpr');
+            ventimp.document.write( ficha.innerHTML );
+            ventimp.document.close();
+            ventimp.print( );
+            ventimp.close();
+        }
     </script>
 </body>
 </html>
